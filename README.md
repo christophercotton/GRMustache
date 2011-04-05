@@ -16,6 +16,9 @@ It supports extensions to the [regular Mustache syntax](http://mustache.github.c
 - dot variable tag: `{{.}}` (introduced by [mustache.js](http://github.com/janl/mustache.js))
 - extended paths, as in `{{../name}}` (introduced by [Handlebars.js](https://github.com/wycats/handlebars.js))
 
+This fork of GRMustache supports the following extensions:
+- index variable, `{{-index}}` during enumerations (introduced by [jmustache](https://github.com/samskivert/jmustache))
+
 ### Embedding in your XCode project
 
 GRMustache is a standalone library made of the Objective-C files contained in the `Classes` folder. Add them to your XCode project, and link against Foundation.framework.
@@ -210,6 +213,25 @@ Each item becomes the context while being rendered. This is how you iterate over
 	{{/items}}
 
 When a key is missed at the item level, it is looked into the enclosing context.
+
+#### -index within Enumerable sections
+The `-index` special variable contains 1 for the first iteration through a
+section, 2 for the second, 3 for the third and so forth. It contains 0 at all
+other times. Note that it also contains 0 for a section that is populated by a
+singleton value rather than a list.
+
+	My shopping list:
+	{{#items}}
+	{{-index}}. {{name}}
+	{{/items}}
+
+result would be:
+
+    My shopping list:
+    1. Peanut butter
+    2. Edamame
+    3. Cheese
+
 
 #### Helper sections
 

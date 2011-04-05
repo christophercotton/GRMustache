@@ -1,6 +1,6 @@
 // The MIT License
 // 
-// Copyright (c) 2010 Gwendal Roué
+// Copyright (c) 2011 Christopher Cotton
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,16 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import "GRMustachePublicAPITest.h"
 
-@interface GRMustacheContext: NSObject {
-@private
-	id object;
-	GRMustacheContext *parent;
-    NSUInteger index;
-}
-+ (id)contextWithObject:(id)object __attribute__((deprecated));
-+ (id)contextWithObjects:(id)object, ... __attribute__((deprecated));
-- (GRMustacheContext *)contextByAddingObject:(id)object __attribute__((deprecated));
-- (GRMustacheContext *)contextByAddingObject:(id)theObject index:(NSUInteger)theIndex __attribute__((deprecated));
-- (id)valueForKey:(NSString *)key;
+
+@interface GRMustacheIndexVariable_v1_6_Test : GRMustachePublicAPITest
 @end

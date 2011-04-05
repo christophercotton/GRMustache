@@ -25,10 +25,12 @@
 @private
 	id object;
 	GRMustacheContext *parent;
+    NSUInteger index;    
 }
 + (id)contextWithObject:(id)object;
 + (id)contextWithObjects:(id)object, ...;
 + (id)contextWithObject:(id)object andObjectList:(va_list)objectList;
 - (GRMustacheContext *)contextByAddingObject:(id)object;
+- (GRMustacheContext *)contextByAddingObject:(id)object index:(NSUInteger)theIndex;
 - (id)valueForKey:(NSString *)key;
 @end

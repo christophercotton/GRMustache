@@ -1,6 +1,6 @@
 // The MIT License
 // 
-// Copyright (c) 2010 Gwendal Roué
+// Copyright (c) 2011 Christopher Cotton
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -19,17 +19,30 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+//
 
+#import "GRMustacheIndexVariable_v1_6_Test.h"
 
-@interface GRMustacheContext: NSObject {
-@private
-	id object;
-	GRMustacheContext *parent;
-    NSUInteger index;
+@implementation GRMustacheIndexVariable_v1_6_Test
+
+- (void)testBasicIndexVariable {
+	NSString *templateString = @"{{#things}}{{-index}}{{/things}}";
+	NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+						  [NSArray arrayWithObjects:@"foo", @"bar", @"baz", nil], @"things",
+						  nil];
+	GRMustacheTemplate *template = [GRMustacheTemplate parseString:templateString error:nil];
+	NSString *result = [template renderObject:data];
+	STAssertEqualObjects(result, @"123", nil);
 }
-+ (id)contextWithObject:(id)object __attribute__((deprecated));
-+ (id)contextWithObjects:(id)object, ... __attribute__((deprecated));
-- (GRMustacheContext *)contextByAddingObject:(id)object __attribute__((deprecated));
-- (GRMustacheContext *)contextByAddingObject:(id)theObject index:(NSUInteger)theIndex __attribute__((deprecated));
-- (id)valueForKey:(NSString *)key;
+
+- (void)testIndexVariableOnSingleton {
+	NSString *templateString = @"{{#things}}{{-index}}{{/things}}";
+	NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+						  @"foo", @"things",
+						  nil];
+	GRMustacheTemplate *template = [GRMustacheTemplate parseString:templateString error:nil];
+	NSString *result = [template renderObject:data];
+	STAssertEqualObjects(result, @"0", nil);
+}
+
 @end

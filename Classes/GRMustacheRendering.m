@@ -68,8 +68,9 @@ static inline void appendRenderingElementsWithContext(NSMutableString *buffer, N
 				}
 			} else {
                 result = [[NSMutableString string] retain];
+                int count = 1; 
 				for (id object in value) {
-                    appendRenderingElementsWithContext(result, elems, [context contextByAddingObject:object]);
+                    appendRenderingElementsWithContext(result, elems, [context contextByAddingObject:object index:count++]);
 				}
 			}
 			break;
@@ -160,7 +161,7 @@ static inline void appendRenderingElementsWithContext(NSMutableString *buffer, N
 	return result;
 }
 
-- (NSString *)renderContext:(GRMustacheContext *)context {
+- (NSString *)renderContext:(GRMustacheContext *)context {    
 	id value = [context valueForKey:name];
 	if ([GRMustacheTemplate objectIsFalseValue:value]) {
 		return @"";

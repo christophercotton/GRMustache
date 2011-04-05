@@ -244,7 +244,9 @@ static NSInteger BOOLPropertyType = NSNotFound;
 @interface GRMustacheContext()
 @property (nonatomic, retain) id object;
 @property (nonatomic, retain) GRMustacheContext *parent;
+@property (nonatomic, assign) NSUInteger index;
 - (id)initWithObject:(id)object parent:(GRMustacheContext *)parent;
+- (id)initWithObject:(id)object parent:(GRMustacheContext *)parent index:(NSUInteger)theIndex;
 - (BOOL)shouldConsiderObjectValue:(id)value forKey:(NSString *)key asBoolean:(CFBooleanRef *)outBooleanRef;
 - (id)valueForKeyComponent:(NSString *)key;
 @end
@@ -253,6 +255,7 @@ static NSInteger BOOLPropertyType = NSNotFound;
 @implementation GRMustacheContext
 @synthesize object;
 @synthesize parent;
+@synthesize index;
 
 #ifdef DEBUG
 + (void)initialize
@@ -305,9 +308,24 @@ static NSInteger BOOLPropertyType = NSNotFound;
 	return self;
 }
 
+- (id)initWithObject:(id)theObject parent:(GRMustacheContext *)theParent index:(NSUInteger)theIndex {
+	if ((self = [self init])) {
+		object = [theObject retain];
+		parent = [theParent retain];
+        index = theIndex;
+	}
+	return self;
+}
+
+
 - (GRMustacheContext *)contextByAddingObject:(id)theObject {
 	return [[[GRMustacheContext alloc] initWithObject:theObject parent:self] autorelease];
 }
+
+- (GRMustacheContext *)contextByAddingObject:(id)theObject index:(NSUInteger)theIndex {
+	return [[[GRMustacheContext alloc] initWithObject:theObject parent:self index:theIndex] autorelease];
+}
+
 
 - (id)valueForKey:(NSString *)key {
 	NSArray *components = [key componentsSeparatedByString:@"/"];
@@ -317,6 +335,11 @@ static NSInteger BOOLPropertyType = NSNotFound;
 		if ([key isEqualToString:@"."]) {
 			return object;
 		}
+
+		if ([key isEqualToString:@"-index"]) {
+			return [NSString stringWithFormat:@"%u", index];
+		}
+        
 		if ([key isEqualToString:@".."]) {
 			if (parent == nil) {
 				// went too far

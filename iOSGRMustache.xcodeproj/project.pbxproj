@@ -60,6 +60,7 @@
 		567BB80812AA6E9400E77EF0 /* dot_key in Resources */ = {isa = PBXBuildFile; fileRef = 567BB7F912AA6E9400E77EF0 /* dot_key */; };
 		567BB80912AA6E9400E77EF0 /* extended_path in Resources */ = {isa = PBXBuildFile; fileRef = 567BB7FF12AA6E9400E77EF0 /* extended_path */; };
 		567BB80A12AA6E9400E77EF0 /* file_system in Resources */ = {isa = PBXBuildFile; fileRef = 567BB80312AA6E9400E77EF0 /* file_system */; };
+		FCCFCD40134A2C070048E5D8 /* GRMustacheIndexVariable_v1_6_Test.m in Sources */ = {isa = PBXBuildFile; fileRef = FCCFCD3F134A2C070048E5D8 /* GRMustacheIndexVariable_v1_6_Test.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -166,6 +167,8 @@
 		567BB9D412ABD2A800E77EF0 /* GRMustacheRendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheRendering.h; sourceTree = "<group>"; };
 		567BBA6912ABE07500E77EF0 /* GRMustacheContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRMustacheContext.h; sourceTree = "<group>"; };
 		568E0FEA1318F8D000A292D4 /* iOSGRMustacheTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iOSGRMustacheTest-Info.plist"; sourceTree = "<group>"; };
+		FCCFCD3E134A2C070048E5D8 /* GRMustacheIndexVariable_v1_6_Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GRMustacheIndexVariable_v1_6_Test.h; path = v1.6/GRMustacheIndexVariable_v1_6_Test.h; sourceTree = "<group>"; };
+		FCCFCD3F134A2C070048E5D8 /* GRMustacheIndexVariable_v1_6_Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GRMustacheIndexVariable_v1_6_Test.m; path = v1.6/GRMustacheIndexVariable_v1_6_Test.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +257,7 @@
 				567BB99E12ABC97A00E77EF0 /* v1.3 */,
 				5667955C13191282004FA7CC /* v1.4 */,
 				562BB03A131A39540004EC7B /* v1.5 */,
+				FCCFCD39134A2B6B0048E5D8 /* v1.6 */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -401,6 +405,15 @@
 			path = v1.3;
 			sourceTree = "<group>";
 		};
+		FCCFCD39134A2B6B0048E5D8 /* v1.6 */ = {
+			isa = PBXGroup;
+			children = (
+				FCCFCD3E134A2C070048E5D8 /* GRMustacheIndexVariable_v1_6_Test.h */,
+				FCCFCD3F134A2C070048E5D8 /* GRMustacheIndexVariable_v1_6_Test.m */,
+			);
+			name = v1.6;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -531,6 +544,7 @@
 				562BB074131A39E80004EC7B /* GRMustacheTemplate_v1_0_Test.m in Sources */,
 				562BB075131A39E80004EC7B /* GRMustacheTemplateLoaderSubclassTest.m in Sources */,
 				562BB076131A39E80004EC7B /* GRPartialTest.m in Sources */,
+				FCCFCD40134A2C070048E5D8 /* GRMustacheIndexVariable_v1_6_Test.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
