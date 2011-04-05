@@ -17,6 +17,7 @@ It supports extensions to the [regular Mustache syntax](http://mustache.github.c
 - extended paths, as in `{{../name}}` (introduced by [Handlebars.js](https://github.com/wycats/handlebars.js))
 
 This fork of GRMustache supports the following extensions:
+
 - index variable, `{{-index}}` during enumerations (introduced by [jmustache](https://github.com/samskivert/jmustache))
 
 ### Embedding in your XCode project
