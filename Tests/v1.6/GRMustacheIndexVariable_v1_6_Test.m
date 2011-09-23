@@ -45,4 +45,20 @@
 	STAssertEqualObjects(result, @"0", nil);
 }
 
+- (void)testIndexVariableWithParent {
+	NSString *templateString = @"{{#people}}{{#name}}{{../-index}}{{/name}} {{/people}}";
+	NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+						  [NSArray arrayWithObjects:
+						   [NSDictionary dictionaryWithObjectsAndKeys:@"Alan", @"name", @"1", @"id", nil],
+						   [NSDictionary dictionaryWithObjectsAndKeys:@"Roger", @"name", @"2", @"id", nil],
+						   nil], @"people",
+						  nil
+						  ];
+	GRMustacheTemplate *template = [GRMustacheTemplate parseString:templateString error:nil];
+	NSString *result = [template renderObject:data];
+	STAssertEqualObjects(result, @"1 2 ", nil);
+
+}
+
+
 @end

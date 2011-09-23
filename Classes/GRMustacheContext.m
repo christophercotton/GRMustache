@@ -335,10 +335,6 @@ static NSInteger BOOLPropertyType = NSNotFound;
 		if ([key isEqualToString:@"."]) {
 			return object;
 		}
-
-		if ([key isEqualToString:@"-index"]) {
-			return [NSString stringWithFormat:@"%u", index];
-		}
         
 		if ([key isEqualToString:@".."]) {
 			if (parent == nil) {
@@ -385,8 +381,12 @@ static NSInteger BOOLPropertyType = NSNotFound;
 }
 
 - (id)valueForKeyComponent:(NSString *)key {
+    // special key for the index
+    if ([key isEqualToString:@"-index"]) {
+        return [NSString stringWithFormat:@"%u", index];
+    }
+
 	// value by selector
-	
 	SEL renderingSelector = NSSelectorFromString([NSString stringWithFormat:@"%@Section:withContext:", key]);
 	if ([object respondsToSelector:renderingSelector]) {
 		return [GRMustacheSelectorHelper helperWithObject:object selector:renderingSelector];
